@@ -18,19 +18,20 @@
         md="4"
         sm="6"
         xl="2"
+        xs="12"
       >
         <v-card>
           <v-img
             :alt="pokemon.name"
             height="200"
             :src="`/images/${pokemon.img}`"
-          >
-            <v-card-title>{{ pokemon.name }}</v-card-title>
-            <v-card-subtitle>Niveau : {{ pokemon.level }}</v-card-subtitle>
-            <v-card-actions>
-              <v-btn color="red" icon="mdi-heart-outline" />
-            </v-card-actions>
-          </v-img></v-card>
+          />
+          <v-card-title>{{ pokemon.name }}</v-card-title>
+          <v-card-subtitle>Niveau : {{ pokemon.level }}</v-card-subtitle>
+          <v-card-actions>
+            <v-btn color="red" icon="mdi-heart-outline" />
+          </v-card-actions>
+        </v-card>
       </v-col>
     </v-row>
   </v-container>
