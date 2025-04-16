@@ -24,7 +24,7 @@
       />
 
       <!-- Titre de l'application affiché dans la barre -->
-      <v-toolbar-title>Pokedex</v-toolbar-title>
+      <v-toolbar-title>Pokedex ({{ pokemonStore.totalPokemons }})</v-toolbar-title>
 
       <!--
       Liens de navigation générés dynamiquement
@@ -44,6 +44,10 @@
 </template>
 
 <script setup>
+// Récupérer le magasin de Pokémons
+  import { usePokemonStore } from '@/stores/pokemonStore'
+  const pokemonStore = usePokemonStore()
+
   /*
   Définition des éléments de menu pour la navigation
     - Chaque élément contient :
