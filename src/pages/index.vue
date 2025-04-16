@@ -1,4 +1,5 @@
 <template>
+  <!-- Conteneur principal pour structurer la disposition de la page -->
   <v-container>
     <h1 class="mb-6 text-center">Pokédex</h1>
 
