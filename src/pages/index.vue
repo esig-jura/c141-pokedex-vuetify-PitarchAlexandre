@@ -45,7 +45,7 @@
   console.log(pokemonStore)
 </script>
 
-<style lang="sass">
-.mdi-heart
+<style lang="sass" scoped>
+:deep(.mdi-heart)
   animation: heartbeat 1s ease-in-out
 </style>
