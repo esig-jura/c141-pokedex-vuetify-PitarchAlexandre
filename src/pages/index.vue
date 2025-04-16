@@ -29,8 +29,7 @@
           <v-card-title>{{ pokemon.name }}</v-card-title>
           <v-card-subtitle>Niveau : {{ pokemon.level }}</v-card-subtitle>
           <v-card-actions>
-            <v-btn color="red" icon="mdi-heart-outline" />
-          </v-card-actions>
+            <v-btn color="red" :icon="pokemonStore.isFavorite(pokemon) ? 'mdi-heart' : 'mdi-heart-outline'" @click="pokemonStore.toggleFavorite(pokemon)" /></v-card-actions>
         </v-card>
       </v-col>
     </v-row>
