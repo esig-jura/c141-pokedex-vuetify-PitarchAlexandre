@@ -4,6 +4,7 @@
     <h1 class="mb-6 text-center">Pokédex</h1>
 
     <v-text-field
+      v-model="search"
       clearable
       label="Rechercher un Pokémon"
       prepend-icon="mdi-magnify"
@@ -12,7 +13,7 @@
     <v-row>
       <!-- Exemple de colonne vide (à dupliquer plus tard avec du contenu) -->
       <v-col
-        v-for="pokemon in pokemonStore.pokemons"
+        v-for="pokemon in filteredPokemons"
         :key="pokemon.id"
         cols="12"
         lg="3"
@@ -21,16 +22,30 @@
         xl="2"
         xs="12"
       >
-      <PokemonCard :pokemon="pokemon" />
+        <PokemonCard :pokemon="pokemon" />
       </v-col>
     </v-row>
   </v-container>
 </template>
 
 <script setup>
-// Récupérer le magasin de Pokémons
+  import { computed, ref } from 'vue'
+  // Récupérer le magasin de Pokémons
   import { usePokemonStore } from '@/stores/pokemonStore'
   const pokemonStore = usePokemonStore()
+  const search = ref('')
+
+  const sortedPokemons = computed(() => {
+    return [...pokemonStore.pokemons].sort((a, b) =>
+      a.name.localeCompare(b.name)
+    )
+  })
+
+  const filteredPokemons = computed(() => {
+    const query = search.value.toLowerCase().trim()
+    return sortedPokemons.value.filter(pokemon =>
+      pokemon.name.toLowerCase().includes(query))
+  })
 
   console.log(pokemonStore)
 </script>
