@@ -20,5 +20,15 @@ declare module 'vue-router/auto-routes' {
   export interface RouteNamedMap {
     '/': RouteRecordInfo<'/', '/', Record<never, never>, Record<never, never>>,
     '/[...path]': RouteRecordInfo<'/[...path]', '/:path(.*)', { path: ParamValue<true> }, { path: ParamValue<false> }>,
+    '/Connexion': RouteRecordInfo<'/Connexion', '/Connexion', Record<never, never>, Record<never, never>>,
+    '/FAQ': RouteRecordInfo<'/FAQ', '/FAQ', Record<never, never>, Record<never, never>>,
+    '/Favoris': RouteRecordInfo<'/Favoris', '/Favoris', Record<never, never>, Record<never, never>>,
+    '/Index': RouteRecordInfo<'/Index', '/Index', Record<never, never>, Record<never, never>>,
+    '/KantoMap': RouteRecordInfo<'/KantoMap', '/KantoMap', Record<never, never>, Record<never, never>>,
+    '/Login': RouteRecordInfo<'/Login', '/Login', Record<never, never>, Record<never, never>>,
+    '/pokemons/[id]/': RouteRecordInfo<'/pokemons/[id]/', '/pokemons/:id', { id: ParamValue<true> }, { id: ParamValue<false> }>,
+    '/pokemons/Ajouter': RouteRecordInfo<'/pokemons/Ajouter', '/pokemons/Ajouter', Record<never, never>, Record<never, never>>,
+    '/pokemons/create': RouteRecordInfo<'/pokemons/create', '/pokemons/create', Record<never, never>, Record<never, never>>,
+    '/toto': RouteRecordInfo<'/toto', '/toto', Record<never, never>, Record<never, never>>,
   }
 }
