@@ -8,6 +8,7 @@
 import { createRouter, createWebHistory } from 'vue-router/auto'
 import { setupLayouts } from 'virtual:generated-layouts'
 import { routes } from 'vue-router/auto-routes'
+import { useAuthStore } from '@/stores/authStore'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -31,6 +32,20 @@ router.onError((err, to) => {
 
 router.isReady().then(() => {
   localStorage.removeItem('vuetify:dynamic-reload')
+})
+
+const protectedRoutes = [
+  '/pokemons/create',
+  // Ajouter d’autres routes protégées ici
+]
+
+router.beforeEach((to, from, next) => {
+  const authStore = useAuthStore()
+  if (protectedRoutes.includes(to.path) && !authStore.isAuthenticated) {
+    next({ path: '/login', query: { redirect: to.fullPath } })
+  } else {
+    next()
+  }
 })
 
 export default router

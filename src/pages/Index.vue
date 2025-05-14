@@ -3,14 +3,15 @@
   <v-container>
     <h1 class="mb-6 text-center">
       Pokédex
-
       <!--
       bouton pour ajouter un pokémon
-        * aria-label : accessibilité pour les lecteurs d'écran
-        * v-tooltip : info-bulle au survol
-        * @click : navigation vers la page de création
+        * aria-label permet d'ajouter une description pour les lecteurs d'écran utilisés par les personnes malvoyantes
+        * v-tooltip permet d'afficher une info-bulle au survol du bouton
+        * @click permet de naviguer vers la page d'ajout de pokémon
+        * v-if="authStore.isAuthenticated" permet de masquer le bouton si l'utilisateur n'est pas connecté
       -->
       <v-btn
+        v-if="authStore.isAuthenticated"
         v-tooltip.bottom="'Ajouter un Pokémon'"
         aria-label="Ajouter un Pokémon"
         class="ml-4"
@@ -19,7 +20,6 @@
         @click="$router.push('pokemons/create')"
       />
     </h1>
-
     <v-text-field
       v-model="search"
       clearable
