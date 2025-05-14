@@ -1,35 +1,33 @@
 <template>
   <v-container v-if="pokemon">
-    <v-row>
+    <v-row class="align-start">
       <v-col cols="12" md="4">
-        <v-img contain height="300" :src="`/images/${pokemon.img}`" />
+        <v-img
+          :alt="pokemon.name"
+          class="rounded"
+          height="300"
+          :src="`/images/${pokemon.img}`"
+        />
       </v-col>
-      <v-col cols="12" md="8">
-        <h1 class="text-h4">{{ pokemon.name }}</h1>
-        <p>Niveau : {{ pokemon.level }}</p>
-        <p>Types :
-          <v-chip
-            v-for="typeId in pokemon.types"
-            :key="typeId"
-            class="ma-1"
-            color="primary"
-            label
-            small
-          >
-            {{ pokemonStore.getTypeById(typeId)?.name }}
-          </v-chip>
-        </p>
 
-        <!-- Placeholder pour stats -->
-        <v-card class="mt-4">
-          <v-card-title>Statistiques</v-card-title>
-          <v-card-text>
-            <p>HP : {{ pokemon.stats.hp }}</p>
-            <p class="text-danger">Attaque : {{ pokemon.stats.attack }}</p>
-            <p>Défense : {{ pokemon.stats.defense }}</p>
-            <p>Vitesse : {{ pokemon.stats.speed }}</p>
-          </v-card-text>
-        </v-card>
+      <v-col cols="12" md="8">
+        <h1 class="text-h4 mb-2">{{ pokemon.name }}</h1>
+        <p class="text-subtitle-1 mb-2">Niveau : {{ pokemon.level }}</p>
+
+        <PokemonTypesChips class="mt-4" :pokemon="pokemon" />
+        <PokemonStats class="mt-6" :stats="pokemon.stats" />
+
+        <p class="mt-6 text-body-1">{{ pokemon.description }}</p>
+
+        <v-btn
+          class="mt-8"
+          color="primary"
+          prepend-icon="mdi-arrow-left"
+          to="/"
+          variant="tonal"
+        >
+          Retour
+        </v-btn>
       </v-col>
     </v-row>
   </v-container>
@@ -44,14 +42,10 @@
 <script setup>
   import { useRoute } from 'vue-router'
   import { usePokemonStore } from '@/stores/pokemonStore'
+  import PokemonTypesChips from '@/components/PokemonTypesChips.vue'
+  import PokemonStats from '@/components/PokemonStats.vue'
 
   const route = useRoute()
   const pokemonStore = usePokemonStore()
-
   const pokemon = pokemonStore.getPokemonById(route.params.id)
-
 </script>
-
-<style scoped>
-
-</style>
