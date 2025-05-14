@@ -1,5 +1,5 @@
 <template>
-  <router-link class="text-decoration-none" :to="`/pokemon/${pokemon.id}`">
+  <router-link class="text-decoration-none" :to="`/pokemons/${pokemon.id}`">
     <v-card class="pa-2" elevation="2">
       <v-img
         :alt="pokemon.name"
