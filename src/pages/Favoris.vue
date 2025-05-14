@@ -1,11 +1,11 @@
 <template>
   <v-container>
     <h1 class="mb-6 text-center">
-      Mes Pokémons Favoris ({{ favoris.length }})
+      Mes Pokémons Favoris ({{ pokemonStore.getFavorites.length }})
     </h1>
-    <v-row v-if="favoris.length > 0">
+    <v-row v-if="pokemonStore.getFavorites.length > 0">
       <v-col
-        v-for="pokemon in favoris"
+        v-for="pokemon in pokemonStore.getFavorites"
         :key="pokemon.id"
         cols="12"
         lg="3"
@@ -34,7 +34,6 @@
   import { usePokemonStore } from '@/stores/pokemonStore'
 
   const pokemonStore = usePokemonStore()
-  const favoris = computed(() => pokemonStore.getFavorites)
 
 </script>
 
